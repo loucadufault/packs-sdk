@@ -42,7 +42,6 @@ import type {PackFormulaMetadata} from '../api';
 import type {PackVersionMetadata} from '../compiled_types';
 import type {ParamDef} from '../api_types';
 import type {ParamDefs} from '../api_types';
-import {PlaceholderIdentityPackId} from '../schema';
 import {PostSetupType} from '../types';
 import type {QueryParamTokenAuthentication} from '../types';
 import {ScaleIconSet} from '../schema';
@@ -809,7 +808,7 @@ const genericObjectSchema: z.ZodTypeAny = z.lazy(() =>
     featured: z.array(z.string()).optional(),
     featuredProperties: z.array(z.string()).optional(),
     identity: zodCompleteObject<Identity>({
-      packId: z.literal(PlaceholderIdentityPackId),
+      packId: z.number().optional(),
       name: z.string().nonempty(),
       dynamicUrl: z.string().optional(),
       attribution: attributionSchema,

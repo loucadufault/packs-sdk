@@ -1121,9 +1121,6 @@ export function makeObjectSchema<
 } {
   const schema: ObjectSchemaDefinition<K, L> = {...schemaDef, type: ValueType.Object};
   validateObjectSchema(schema);
-  if (schema.identity) {
-    schema.identity = {...schema.identity, packId: PlaceholderIdentityPackId};
-  }
   return schema as any;
 }
 
