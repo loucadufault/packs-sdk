@@ -811,9 +811,9 @@ export interface ObjectSchemaDefinition<K extends string, L extends string> exte
    * Specifies that object instances with this schema can contain additional properties not defined
    * in the schema, and that the packs infrastructure should retain these unknown properties
    * rather than stripping them.
-   * 
+   *
    * Properties not declared in the schema will not work properly in Coda: they cannot be
-   * used natively in the formula language and will not have correct types in Coda. But, in certain 
+   * used natively in the formula language and will not have correct types in Coda. But, in certain
    * scenarios they can be useful.
    */
   includeUnknownProperties?: boolean;
@@ -1121,10 +1121,9 @@ export function makeObjectSchema<
 } {
   const schema: ObjectSchemaDefinition<K, L> = {...schemaDef, type: ValueType.Object};
   validateObjectSchema(schema);
-  // TODO(jonathan): Enable after existing packs go through the v2 upload flow.
-  // if (schema.identity) {
-  //   schema.identity = {...schema.identity, packId: PlaceholderIdentityPackId};
-  // }
+  if (schema.identity) {
+    schema.identity = {...schema.identity, packId: PlaceholderIdentityPackId};
+  }
   return schema as any;
 }
 
